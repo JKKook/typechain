@@ -16,9 +16,9 @@ interface BlockShape {
 class Block implements BlockShape {
     public hash: string;
     constructor(
-        public prevHash: string,
-        public height: number,
-        public data: string,
+        public readonly prevHash: string,
+        public readonly height: number,
+        public readonly data: string,
     ) {
         this.hash = Block.calculateHash(prevHash, height, data);
     }
@@ -57,8 +57,10 @@ class BlockChain {
         this.blocks.push(newBlock);
     }
 
-    public getBlock(): Block[] {
-        return this.blocks;
+    public getBlock(): readonly Block[] {
+        // 체이닝을 배열로 getBlock을 얻게 되면 외부에서 chain 연결은 불가 하다.
+        // 단, 여전히 외부에서 getBlock매서드를 접근할 수 있다. => 해결 방법 readonly
+        return [...this.blocks];
     }
 }
 
@@ -68,6 +70,8 @@ blockChain.addBlock('Second one');
 blockChain.addBlock('Third one');
 blockChain.addBlock('Fourth one');
 
-blockChain.getBlock().push(new Block('bit', 123, 'HACKKKKKKKKED!!!'));
+// 해킹 위험이 존재 한다.
+// readonly로 인해 외부에서 접근 불가능하다.
+// blockChain.getBlock().push(new Block('bit', 123, 'HACKKKKKKKKED!!!'));
 
 console.log(blockChain.getBlock());
