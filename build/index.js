@@ -1,8 +1,7 @@
-class Block {
-    constructor(data) {
-        this.data = data;
-    }
-    static hello() {
-        return 'hi';
-    }
-}
+import { increase, decrease, isURL } from './myPackage';
+increase(1);
+decrease(1);
+isURL({
+    debug: false,
+    url: 'https://',
+});
