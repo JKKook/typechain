@@ -1,0 +1,10 @@
+{
+    "include": ["src"],
+    "compilerOptions": {
+        "outDir": "build", // npm run build
+        "esModuleInterop": true,
+        "target": "ES6", // 컴파일 할 자바스크립트 버전
+        "lib": ["ES6", "DOM"], // 합쳐진 라이브러리의 정의 파일(declaration files)을 특정해주는 역할, 런타임 환경(DOM관련 매서드를 사용할 수 있음)
+        "strict": true
+    }
+}
