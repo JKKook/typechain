@@ -4,7 +4,7 @@
     "description": "",
     "scripts": {
         "build": "tsc",
-        "dev": "nodemon --exec ts-node src/index.ts",
+        "dev": "nodemon --exec ts-node src/typechain.ts",
         "start": "node build/index.js"
     },
     "keywords": [],
